@@ -6,8 +6,8 @@ var player = require('./sample-player');
 var play = document.querySelector('.play');
 var stop = document.querySelector('.stop');
 
-play.onclick = function() {
-    player.load(stage, './app/samples/open.wav');
+play.onclick = function(e) {
+    player.load(stage, e.target.value);
     play.setAttribute('disabled', 'disabled');
 }
 
