@@ -1,0 +1,16 @@
+{
+  "name": "final-year-project",
+  "version": "0.0.1",
+  "devDependencies": {
+    "browser-sync": "^1.5.8",
+    "browserify": "^6.1.0",
+    "gulp": "^3.8.8",
+    "gulp-jshint": "^1.8.5",
+    "gulp-load-plugins": "^0.7.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-util": "^3.0.1",
+    "jquery": "^2.1.1",
+    "jshint-stylish": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}

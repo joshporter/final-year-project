@@ -1,0 +1,19 @@
+{
+  "name": "guitar-pedals",
+  "version": "0.1.0",
+  "authors": [
+    "Josh Porter <josh@joshporter.co.uk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components"
+  ],
+  "dependencies": {
+    "webaudio-controls": "*",
+    "bootstrap": "~3.2.0",
+    "jquery": "~2.1.1"
+  }
+}
