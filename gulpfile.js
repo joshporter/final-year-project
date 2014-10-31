@@ -29,7 +29,8 @@ gulp.task('browser-sync', function() {
     browserSync(files, {
         server: {
             baseDir: "./app"
-        }
+        },
+        browser: "google chrome"
     });
 });
 

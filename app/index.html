@@ -9,16 +9,24 @@
 </head>
 <body>
 
-<h2>Guitar Pedals</h2>
+<canvas id='waveTable' width='400' height='265' style="background-color: #5d5d5d;"></canvas>
+
+<button class="play" value="samples/blues.wav">Play</button>
+<button class="stop">Stop</button>
+<button class="bypass">Bypass</button>
+
+<br/>
+<input class="inputgain" type="range" min="0" max="50" value="1"/>
+<br/>
+<input class="outputgain" type="range" min="0" max="50" value="1"/>
+
+button
+
 
 <!--<webaudio-knob id="distortion-gain" src="app/img/plastic_knob.png" value="0" max="100" sprites="30" diameter="64" valuetip="0"></webaudio-knob>-->
 <!--<webaudio-knob id="distortion-volume" src="app/img/plastic_knob.png" value="0" max="100" sprites="30" diameter="64" valuetip="0"></webaudio-knob>-->
 
 <!--<webaudio-switch id="distortion-switch" width="45" height="45" src="app/img/footsw.png"></webaudio-switch>-->
-
-<button class="play" value="samples/open.wav">Play</button>
-<button class="stop">Stop</button>
-
 
 <script src="js/bundle.js"></script>
 </body>
