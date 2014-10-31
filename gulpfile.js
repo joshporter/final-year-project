@@ -1,17 +1,17 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var browserSync = require('browser-sync');
-
 var $ = require('gulp-load-plugins')();
+
+var browserify = require('browserify');
+var browserSync = require('browser-sync');
+var source = require('vinyl-source-stream');
 
 gulp.task('js', ['js-hint'], function() {
     return browserify('./src/main', { debug:true })
         .bundle()
         .pipe(source('bundle.js'))
-        .pipe(gulp.dest('./src'))
+        .pipe(gulp.dest('./app/js/'))
 });
 
 gulp.task('js-hint', function () {
@@ -22,14 +22,15 @@ gulp.task('js-hint', function () {
 
 gulp.task('browser-sync', function() {
     var files = [
-        './index.html',
+        './app/index.html',
         './src/*.js'
     ];
 
     browserSync(files, {
         server: {
-            baseDir: "./"
-        }
+            baseDir: "./app"
+        },
+        browser: "google chrome"
     });
 });
 
