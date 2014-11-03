@@ -23,7 +23,8 @@ gulp.task('js-hint', function () {
 gulp.task('browser-sync', function() {
     var files = [
         './app/index.html',
-        './src/*.js'
+        './src/*.js',
+        './app/css/*.css'
     ];
 
     browserSync(files, {

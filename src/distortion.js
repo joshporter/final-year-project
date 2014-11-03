@@ -10,7 +10,7 @@ var input,
     lowpass,
     highpass,
     amount = 10,
-    type = 'dist3';
+    type = 'dist1';
 
 exports.load = function () {
     input = stage.createGain();
@@ -21,7 +21,7 @@ exports.load = function () {
     boost = stage.createBiquadFilter();
     cut = stage.createBiquadFilter();
 
-    input.gain.value = 20;
+    input.gain.value = 100;
 
     lowpass.type = "lowpass";
     lowpass.frequency.value = 5000;
@@ -66,7 +66,7 @@ exports.makeDistortionCurve = function (amount, type) {
         curve = new Float32Array(samples);
 
     for (var i = 0; i < samples; ++i) {
-        curve[i] = this.curveAlgorithm(type, k, i * 2 / samples - 1);
+        curve[i] = this.curveAlgorithm(i * 2 / samples - 1, type, k);
     }
 
     console.log(curve);
@@ -76,7 +76,7 @@ exports.makeDistortionCurve = function (amount, type) {
     return curve;
 };
 
-exports.curveAlgorithm = function (index, k, x) {
+exports.curveAlgorithm = function (x, type, k) {
     switch(type) {
         case 'overdrive':
             return (1 + k) * x / (1 + k * Math.abs(x));
