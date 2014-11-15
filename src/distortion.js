@@ -10,7 +10,7 @@ var input,
     lowpass,
     highpass,
     amount = 10,
-    type = 'dist1';
+    type = 'dist3';
 
 exports.load = function () {
     input = stage.createGain();
@@ -71,6 +71,8 @@ exports.makeDistortionCurve = function (amount, type) {
 
     console.log(curve);
 
+    window.curve = curve;
+
     this.plotWavetable(curve);
 
     return curve;
@@ -86,6 +88,18 @@ exports.curveAlgorithm = function (x, type, k) {
             return Math.max(-1, Math.min(1, x * k));
         case 'dist3':
             return Math.max(-0.5, Math.min(1.5, x * k));
+        case 'dist4':
+            return this.tanh(4 * Math.sin(x)) / 2;
+        case 'dist5':
+            return (Math.exp(x) - Math.exp(-x * 1.2)) / (Math.exp(x) + Math.exp(-x));
+        case 'dist6':
+            return this.tanh(x);
+        case 'distortion':
+            var q = x * k,
+                mix = 1;
+            return mix * (this.sign(q) * (1 - Math.exp(-Math.abs(q)))) + (1 - mix) * x;
+        case 'cheby':
+            return 1 * this.cheby(x, 1) + 0.125 * this.cheby(x, 2) + 1 * this.cheby(x, 3) + 0.26 * this.cheby(x, 4);
     }
 };
 
@@ -115,7 +129,7 @@ exports.plotWavetable = function (waveTable) {
 
 };
 
-exports.chebyshev = function (order, x) {
+exports.cheby = function (x, order) {
     switch (order) {
         case 1:
             return 1;
@@ -133,3 +147,20 @@ exports.chebyshev = function (order, x) {
             return 64 * Math.pow(x, 7) - 112 * Math.pow(x, 5) + 56 * Math.pow(x, 3) - 7 * x;
     }
 };
+
+exports.tanh = function (x) {
+    if (x === Infinity) {
+        return 1;
+    } else if (x === -Infinity) {
+        return -1;
+    } else {
+        return (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
+    }
+}
+
+exports.sign = function (x) {
+    x = +x // convert to a number
+    if (x === 0 || isNaN(x))
+        return x
+    return x > 0 ? 1 : -1
+}
