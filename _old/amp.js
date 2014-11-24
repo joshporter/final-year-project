@@ -30,7 +30,7 @@ exports.load = function () {
     low.connect(mid);
     mid.connect(high);
     high.connect(output);
-}
+};
 
 exports.input = function () {
     return input;

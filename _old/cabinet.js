@@ -19,13 +19,13 @@ exports.load = function (irPath) {
         }, function (e) {
             if (e) console.log("Cannot load cabinet" + e);
         });
-    }
+    };
 
     request.send(null);
 
     input.connect(cabinet);
     cabinet.connect(output);
-}
+};
 
 exports.input = function () {
     return input;

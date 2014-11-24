@@ -46,7 +46,7 @@ exports.load = function () {
     waveshaper.connect(cut);
     cut.connect(highpass);
     highpass.connect(output);
-}
+};
 
 exports.input = function () {
     return input;
@@ -68,10 +68,6 @@ exports.makeDistortionCurve = function (amount, type) {
     for (var i = 0; i < samples; ++i) {
         curve[i] = this.curveAlgorithm(i * 2 / samples - 1, type, k);
     }
-
-    console.log(curve);
-
-    window.curve = curve;
 
     this.plotWavetable(curve);
 
@@ -156,11 +152,11 @@ exports.tanh = function (x) {
     } else {
         return (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
     }
-}
+};
 
 exports.sign = function (x) {
-    x = +x // convert to a number
+    x = +x; // convert to a number
     if (x === 0 || isNaN(x))
-        return x
-    return x > 0 ? 1 : -1
-}
+        return x;
+    return x > 0 ? 1 : -1;
+};

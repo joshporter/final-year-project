@@ -23,12 +23,12 @@ exports.load = function (sampleUrl) {
 };
 
 exports.connect = function(target){
-    output.connect(target);
+    output.connect(target.value);
 };
 
 exports.output = function() {
     return output;
-}
+};
 
 exports.start = function() {
     source = stage.createBufferSource();
@@ -42,7 +42,7 @@ exports.start = function() {
 
 exports.setBuffer = function(buffer){
     sample = buffer;
-}
+};
 
 exports.stop = function() {
     source.stop(0);
