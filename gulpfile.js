@@ -5,8 +5,6 @@ var browserSync = require('browser-sync');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-//https://github.com/dickeyxxx/ng-modules/tree/gh-pages/src
-//https://medium.com/@dickeyxxx/best-practices-for-building-angular-js-apps-266c1a4a6917
 gulp.task('js', ['js:hint'], function() {
     return gulp.src(['src/**/module.js', 'src/**/*.js'])
         .pipe($.plumber())
