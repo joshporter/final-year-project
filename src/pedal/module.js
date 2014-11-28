@@ -1,2 +1,3 @@
-'use strict';
-angular.module('pedal', []);
+angular.module('Pedal', [
+    'SharedAudioContext'
+]);

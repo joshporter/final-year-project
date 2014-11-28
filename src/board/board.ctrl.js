@@ -1,5 +1,20 @@
-angular.module('board')
-    .controller('BoardCtrl', function($scope) {
-        console.log('BoardCtrl');
-        console.log($scope);
-    });
+function BoardCtrl (Board) {
+    var vm = this
+
+    Board.loadSource();
+    Board.loadPedals();
+    Board.wireUpBoard();
+
+    vm.play = function() {
+        Board.playSample();
+    };
+
+    vm.stop = function() {
+        Board.stopSample();
+    };
+
+}
+
+angular
+    .module('Board')
+    .controller('BoardCtrl', BoardCtrl);
