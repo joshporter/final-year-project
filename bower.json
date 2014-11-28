@@ -19,5 +19,8 @@
     "fontawesome": "~4.2.0",
     "jquery": "~2.1.1",
     "webaudio-controls": "*"
+  },
+  "devDependencies": {
+    "extend.js": "~0.2.2"
   }
 }

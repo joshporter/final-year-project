@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('app', [
+angular.module('GtrPedals', [
     'ngRoute',
-    'board'
+    'Board'
 ]);
