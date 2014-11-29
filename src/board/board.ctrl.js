@@ -13,6 +13,10 @@ function BoardCtrl (Board) {
         Board.stopSample();
     };
 
+    vm.liveInput = function() {
+        Board.toggleLiveInput();
+    }
+
 }
 
 angular
