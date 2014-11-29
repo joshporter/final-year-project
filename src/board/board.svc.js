@@ -1,28 +1,28 @@
-function Board (SampleSource, SharedAudioContext) {
+function Board (SampleSource, Cabinet, SharedAudioContext) {
     var stage = SharedAudioContext.getContext();
 
-    var pedalBoard = {
-        sample: new SampleSource()
-    };
+    var sample = new SampleSource(),
+        cabinet = new Cabinet();
 
     this.loadSource = function() {
-        pedalBoard.sample.loadBuffer('assets/samples/FF.wav');
-        console.log(pedalBoard.sample);
+        sample.loadBuffer('assets/samples/chords.wav');
     }
 
     this.loadPedals = function () {
+        cabinet.load('assets/ir/s-preshigh-16.wav');
     };
 
     this.wireUpBoard = function() {
-        pedalBoard.sample.connect(stage.destination);
+        sample.connect(cabinet.input);
+        cabinet.connect(stage.destination);
     };
 
     this.playSample = function() {
-        pedalBoard.sample.play();
+        sample.play();
     }
 
     this.stopSample = function() {
-        pedalBoard.sample.stop();
+        sample.stop();
     }
 }
 angular
