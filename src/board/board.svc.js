@@ -1,39 +1,48 @@
-function Board (FileInput, StreamInput, Cabinet, SharedAudioContext) {
+function Board ($rootScope, FileInput, LineInput, Cabinet, SharedAudioContext) {
     var stage = SharedAudioContext.getContext(),
-        pedalBoardInput = stage.createGain();
+        boardInput = stage.createGain();
 
     var sample = new FileInput(),
-        stream = new StreamInput();
+        line = new LineInput();
         cabinet = new Cabinet();
 
     this.loadSource = function() {
         sample.loadBuffer('assets/samples/chords.wav');
-    }
+        sample.connect(boardInput);
+    };
 
     this.loadPedals = function () {
-        cabinet.load('assets/ir/s-preshigh-16.wav');
+        cabinet.load('assets/ir/5150.wav');
     };
 
     this.wireUpBoard = function() {
-        pedalBoardInput.connect(cabinet.input);
+        boardInput.connect(cabinet.input);
         cabinet.connect(stage.destination);
     };
 
     this.playSample = function() {
-        sample.connect(pedalBoardInput)
         sample.play();
-    }
+    };
 
     this.stopSample = function() {
         sample.stop();
-    }
+    };
 
     this.toggleLiveInput = function() {
-        if(!stream.isStreaming) {
-            stream.loadStream();
-            stream.connect(pedalBoardInput);
+        if(!line.isStreaming) {
+            if(line.isLoaded) {
+                line.load();
+                $rootScope.$on('linein:loaded', function () {
+                    line.stream.connect(boardInput);
+                });
+            } else {
+                line.stream.connect(boardInput);
+            }
+
+            line.isStreaming = true;
         } else {
-            stream.stop();
+            line.stop();
+            line.isStreaming = false;
         }
     }
 }

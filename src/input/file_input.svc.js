@@ -42,10 +42,6 @@ function FileInput (SharedAudioContext) {
         this.output.connect(target);
     };
 
-    FileInput.prototype.output = function() {
-        return this.output;
-    };
-
     FileInput.prototype.play = function() {
         this.source = stage.createBufferSource();
         this.source.loop = true;
@@ -58,6 +54,7 @@ function FileInput (SharedAudioContext) {
 
 
     FileInput.prototype.stop = function() {
+        this.source.stop();
         this.source.disconnect();
     };
 

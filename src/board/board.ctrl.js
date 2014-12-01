@@ -1,5 +1,5 @@
 function BoardCtrl (Board) {
-    var vm = this
+    var vm = this;
 
     Board.loadSource();
     Board.loadPedals();
