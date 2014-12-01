@@ -1,5 +1,5 @@
 angular.module('Board', [
+    'Input',
     'Pedal',
-    'SharedAudioContext',
-    'Source'
+    'SharedAudioContext'
 ]);

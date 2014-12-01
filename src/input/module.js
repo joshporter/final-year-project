@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('Source', [
+angular.module('Input', [
     'SharedAudioContext'
 ]);

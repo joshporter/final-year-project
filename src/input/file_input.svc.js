@@ -1,14 +1,14 @@
-function SampleSource (SharedAudioContext) {
+function FileInput (SharedAudioContext) {
 
     var stage = SharedAudioContext.getContext();
 
-    var SampleSource = function() {
+    var FileInput = function() {
         this.output = stage.createGain();
         this.source = null;
         this.sample = null;
     };
 
-    SampleSource.prototype.loadBuffer = function(url) {
+    FileInput.prototype.loadBuffer = function(url) {
         var request = new XMLHttpRequest();
         request.open("GET", url, true);
         request.responseType = "arraybuffer";
@@ -38,15 +38,11 @@ function SampleSource (SharedAudioContext) {
         request.send();
     };
 
-    SampleSource.prototype.connect = function(target){
+    FileInput.prototype.connect = function(target){
         this.output.connect(target);
     };
 
-    SampleSource.prototype.output = function() {
-        return this.output;
-    };
-
-    SampleSource.prototype.play = function() {
+    FileInput.prototype.play = function() {
         this.source = stage.createBufferSource();
         this.source.loop = true;
         this.source.buffer = this.sample;
@@ -57,15 +53,15 @@ function SampleSource (SharedAudioContext) {
     };
 
 
-    SampleSource.prototype.stop = function() {
-        this.source.stop(0);
-        this.source = null;
+    FileInput.prototype.stop = function() {
+        this.source.stop();
+        this.source.disconnect();
     };
 
-    return SampleSource;
+    return FileInput;
 }
 
 
 angular
-    .module('Source')
-    .factory('SampleSource', SampleSource);
+    .module('Input')
+    .factory('FileInput', FileInput);

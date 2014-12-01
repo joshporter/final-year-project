@@ -1,5 +1,5 @@
 function BoardCtrl (Board) {
-    var vm = this
+    var vm = this;
 
     Board.loadSource();
     Board.loadPedals();
@@ -12,6 +12,10 @@ function BoardCtrl (Board) {
     vm.stop = function() {
         Board.stopSample();
     };
+
+    vm.liveInput = function() {
+        Board.toggleLiveInput();
+    }
 
 }
 

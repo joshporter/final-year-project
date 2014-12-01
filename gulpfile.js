@@ -39,7 +39,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: "./"
         },
-        browser: "google chrome"
+        ghostMode: false
     });
 });
 

@@ -5,6 +5,7 @@ function Cabinet (SharedAudioContext) {
     var Cabinet = function() {
         this.input = stage.createGain();
         this.output = stage.createGain();
+        this.boost = stage.createGain();
         this.convolver = stage.createConvolver();
     };
 
@@ -25,10 +26,12 @@ function Cabinet (SharedAudioContext) {
 
         request.send(null);
 
-        this.input.gain.value = 10;
+        this.input.gain.value = 3;
+        this.boost.gain.value = 1;
 
         this.input.connect(this.convolver);
-        this.convolver.connect(this.output);
+        this.convolver.connect(this.boost);
+        this.boost.connect(this.output);
     };
 
     Cabinet.prototype.connect = function(target){
