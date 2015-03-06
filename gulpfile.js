@@ -26,20 +26,19 @@ gulp.task('js:watch', ['js'], function () {
     gulp.watch('src/**/*.js', ['js'])
 });
 
-//// Compile SASS & auto-inject into browsers
-//gulp.task('sass', function () {
-//    return gulp.src('scss/styles.scss')
-//        .pipe(sass({includePaths: ['scss']}))
-//        .pipe(gulp.dest('css'))
-//        .pipe(browserSync.reload({stream:true}));
-//});
+// inject css
+gulp.task('css', function () {
+    return gulp.src('styles/main.css')
+        .pipe(browserSync.reload({stream:true}));
+});
 
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
             baseDir: "./"
         },
-        ghostMode: false
+        ghostMode: false,
+        open: false
     });
 });
 
@@ -50,7 +49,7 @@ gulp.task('browser-sync:reload', function () {
 
 // Watch task
 gulp.task('watch', ['browser-sync'], function () {
-    //gulp.watch("scss/*.scss", ['sass']);
+    gulp.watch("styles/main.css", ['css']);
     gulp.watch('src/**/*.js', ['js', 'browser-sync:reload']);
     gulp.watch(['templates/*.html', 'index.html'], ['browser-sync:reload']);
 });

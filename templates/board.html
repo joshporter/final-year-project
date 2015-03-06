@@ -1,15 +1,49 @@
 <div class="container">
 
-    <div class="panel panel-default">
-        <input-controls></input-controls>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="pedal">
-            <webaudio-knob id="distortion-gain" src="assets/img/plastic_knob.png" value="0" max="100" sprites="30" diameter="64" valuetip="0"></webaudio-knob>
-            <webaudio-knob id="distortion-volume" src="assets/img/plastic_knob.png" value="0" max="100" sprites="30" diameter="64" valuetip="0"></webaudio-knob>
-            <webaudio-switch></webaudio-switch>
+    <div class="row">
+        <div class="col-md-2">
+            <input-controls></input-controls>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <distortion-pedal></distortion-pedal>
+
+            <div class="pedal overdrive">
+                <div class="knobs">
+                    <webaudio-knob id="overdrive-volume" class="knob-left" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                    <span class="led"></span>
+                    <webaudio-knob id="overdrive-tone" class="knob-right" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                </div>
+                <webaudio-switch id="overdrive-foot-sw" class="foot-sw" src=""></webaudio-switch>
+            </div>
+
+            <div class="pedal flanger">
+                <div class="knobs">
+                    <webaudio-knob id="flanger-volume" class="knob-left" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                    <span class="led"></span>
+                    <webaudio-knob id="flanger-tone" class="knob-right" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                </div>
+                <webaudio-switch id="flanger-foot-sw" class="foot-sw" src=""></webaudio-switch>
+            </div>
+
+            <div class="pedal delay">
+                <div class="knobs">
+                    <webaudio-knob id="distortion-volume" class="knob-left" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                    <span class="led"></span>
+                    <webaudio-knob id="distortion-tone" class="knob-right" src="assets/img/knobman-basic.png" value="5.5" min="1" max="10" sprites="30" diameter="64"
+                                   valuetip="0" step="0.5"></webaudio-knob>
+                </div>
+                <webaudio-switch id="distortion-foot-sw" class="foot-sw" src=""></webaudio-switch>
+            </div>
+
+        </div>
+    </div>
 </div>

@@ -1,14 +1,14 @@
-function LineInput ($rootScope, SharedAudioContext) {
+function LineInput($rootScope, SharedAudioContext) {
 
     var stage = SharedAudioContext.getContext();
 
-    var LineInput = function() {
+    var LineInput = function () {
         this.output = stage.createGain();
         this.stream = null;
         this.isStreaming = false;
     };
 
-    LineInput.prototype.load = function() {
+    LineInput.prototype.load = function () {
         var self = this;
 
         navigator.getUserMedia({
@@ -29,18 +29,14 @@ function LineInput ($rootScope, SharedAudioContext) {
         });
     };
 
-    LineInput.prototype.connect = function(target) {
+    LineInput.prototype.connect = function (target) {
         this.stream.connect(target);
     };
 
-    LineInput.prototype.stop = function() {
+    LineInput.prototype.stop = function () {
         this.stream.disconnect();
         this.isStreaming = false;
     };
-
-    LineInput.prototype.isLoaded = function() {
-        return this.stream !== undefined;
-    }
 
     return LineInput;
 }
