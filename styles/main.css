@@ -1,5 +1,73 @@
+body {
+    background: #dcdcdc;
+}
+
 .pedal {
-    background-color: green;
-    width: 100px;
-    height: 300px;
+    float: left;
+    position: relative;
+    margin: 20px 20px;
+    width: 192px;
+    height: 278px;
+    color: #111513;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2), inset 0 0px 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.3), 0 3px 2px rgba(0, 0, 0, 0.1), 0 5px 4px rgba(0, 0, 0, 0.1), inset 0 2px 1px rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+}
+
+.led {
+    position: absolute;
+    left: 47.5%;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #3f070a;
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2), inset 0 0px 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.3), 0 3px 2px rgba(0, 0, 0, 0.1), 0 5px 4px rgba(0, 0, 0, 0.1), inset 0 2px 1px rgba(255, 255, 255, 0.2);
+}
+
+.active {
+    background-color: #f49b7d;
+}
+
+.knob-left {
+    position: absolute;
+    left: 7.5%;
+    top: 15px;
+}
+
+.knob-right {
+    position: absolute;
+    left: 60%;
+    top: 15px;
+}
+
+.foot-sw {
+    position: absolute;
+    left: 7.5%;
+    top: 50%;
+    width: 165px;
+    height: 120px;
+    padding: 20px;
+    font-size: 35px;
+    color: #424a4d;
+    text-shadow: 0 1px 1px rgba(0,0,0, .5), 0 -1px 0 rgba(255,255,255, .2);
+    border-radius: 4px 4px 10px 10px;
+    background: #424a4d url('http://api.thumbr.it/whitenoise-361x370.png?background=424a4dff&noise=000000&density=40&opacity=15');
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0 0px 1px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.6), 0 4px 2px rgba(0, 0, 0, 0.2), 0 9px 4px rgba(0, 0, 0, 0.1), inset 0 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+.distortion {
+    background-color: #da5818;
+}
+
+.overdrive {
+    background-color: #d6be00;
+}
+
+.flanger {
+    background-color: #9e3e8d;
+}
+
+.delay {
+    background-color: #d6dce2;
+    color: #4b689c;
 }
