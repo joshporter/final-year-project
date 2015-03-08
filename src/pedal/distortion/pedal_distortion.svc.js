@@ -5,6 +5,7 @@ function Distortion (SharedAudioContext) {
     var Distortion = function() {
         this.input = stage.createGain();
         this.output = stage.createGain();
+        this.gain = stage.createGain();
         this.waveshaper = stage.createWaveShaper();
         this.lowpass = stage.createBiquadFilter();
         this.highpass = stage.createBiquadFilter();
@@ -12,11 +13,12 @@ function Distortion (SharedAudioContext) {
         this.cut = stage.createBiquadFilter();
         this.volume = 7.5;
         this.tone = 20;
+        this.isBypassed = true;
     };
 
     Distortion.prototype.load = function(type) {
 
-        this.input.gain.value = this.volume;
+        this.gain.gain.value = this.volume;
 
         this.lowpass.type = "lowpass";
         this.lowpass.frequency.value = 5000;
@@ -35,12 +37,14 @@ function Distortion (SharedAudioContext) {
         this.highpass.type = "highpass";
         this.highpass.frequency.value = this.tone;
 
-        this.input.connect(this.lowpass);
+        this.gain.connect(this.lowpass)
         this.lowpass.connect(this.boost);
         this.boost.connect(this.waveshaper);
         this.waveshaper.connect(this.cut);
         this.cut.connect(this.highpass);
-        this.highpass.connect(this.output);
+
+        //bypass by default
+        this.input.connect(this.output);
     };
 
     Distortion.prototype.makeDistortionCurve = function (amount, type) {
@@ -95,8 +99,25 @@ function Distortion (SharedAudioContext) {
         this.output.connect(target);
     };
 
+    Distortion.prototype.bypass = function(){
+        if(this.isBypassed) {
+            this.input.disconnect();
+            this.input.connect(this.gain);
+            this.highpass.connect(this.output);
+
+            this.isBypassed = false;
+        } else {
+            this.input.disconnect();
+            this.highpass.disconnect();
+
+            this.input.connect(this.output);
+
+            this.isBypassed = true;
+        }
+    };
+
     Distortion.prototype.setVolume = function(volume) {
-        this.input.gain.value = 1.5 * volume;
+        this.gain.gain.value = 1.5 * volume;
     };
 
     Distortion.prototype.setTone = function(tone) {

@@ -9,8 +9,16 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, SharedAudi
         distortion: new Distortion()
     };
 
+    var samples = [
+        'assets/samples/open.wav',
+        'assets/samples/chords.wav',
+        'assets/samples/everlong.wav',
+        'assets/samples/octaves.wav',
+        'assets/samples/FF.wav',
+    ];
+
     this.loadSource = function () {
-        pedals.sample.loadBuffer('assets/samples/open.wav');
+        pedals.sample.loadBuffer(samples[1]);
         pedals.sample.connect(boardInput);
     };
 
@@ -46,8 +54,8 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, SharedAudi
         }
     };
 
-    this.getPedals = function () {
-      return pedals;
+    this.getPedal = function (effect) {
+      return pedals[effect];
     };
 }
 angular
