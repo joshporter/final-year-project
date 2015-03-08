@@ -1,8 +1,8 @@
-function Distortion (SharedAudioContext) {
+function Overdrive (SharedAudioContext) {
 
     var stage = SharedAudioContext.getContext();
 
-    var Distortion = function() {
+    var Overdrive = function() {
         this.input = stage.createGain();
         this.output = stage.createGain();
         this.gain = stage.createGain();
@@ -16,7 +16,7 @@ function Distortion (SharedAudioContext) {
         this.isBypassed = true;
     };
 
-    Distortion.prototype.load = function(type) {
+    Overdrive.prototype.load = function(type) {
 
         this.gain.gain.value = this.volume;
 
@@ -31,7 +31,7 @@ function Distortion (SharedAudioContext) {
         this.cut.frequency.value = 100;
         this.cut.gain.value = -6;
 
-        this.waveshaper.curve = this.makeDistortionCurve(10, type);
+        this.waveshaper.curve = this.makeOverdriveCurve(10, type);
         this.waveshaper.oversample = '4x';
 
         this.highpass.type = "highpass";
@@ -47,7 +47,7 @@ function Distortion (SharedAudioContext) {
         this.input.connect(this.output);
     };
 
-    Distortion.prototype.makeDistortionCurve = function (amount, type) {
+    Overdrive.prototype.makeOverdriveCurve = function (amount, type) {
         var k = typeof amount === 'number' ? amount : 10,
             samples = 11025,
             curve = new Float32Array(samples);
@@ -59,24 +59,14 @@ function Distortion (SharedAudioContext) {
         return curve;
     };
 
-    Distortion.prototype.curveAlgorithm = function (x, type, k) {
+    Overdrive.prototype.curveAlgorithm = function (x, type, k) {
         switch(type) {
-            case 'dist1':
-                return Math.max(-0.5, Math.min(0.5, x * k));
-            case 'dist2':
-                return Math.max(-1, Math.min(1, x * k));
-            case 'dist3':
-                return Math.max(-0.5, Math.min(1.5, x ));
-            case 'dist4':
-                return 2.8 * Math.pow(x, 3) + Math.pow(x,2) + -1.1 * x - 0.5;
-            case 'dist5':
-                return (Math.exp(x) - Math.exp(-x * 1.2)) / (Math.exp(x) + Math.exp(-x));
-            case 'dist6':
-                return this.tanh(x);
+            case 'overdrive':
+                return (1 + k) * x / (1 + k * Math.abs(x));
         }
     };
 
-    Distortion.prototype.tanh = function (x) {
+    Overdrive.prototype.tanh = function (x) {
         if (x === Infinity) {
             return 1;
         } else if (x === -Infinity) {
@@ -86,18 +76,18 @@ function Distortion (SharedAudioContext) {
         }
     };
 
-    Distortion.prototype.sign = function (x) {
+    Overdrive.prototype.sign = function (x) {
         x = +x; // convert to a number
         if (x === 0 || isNaN(x))
             return x;
         return x > 0 ? 1 : -1;
     };
 
-    Distortion.prototype.connect = function(target){
+    Overdrive.prototype.connect = function(target){
         this.output.connect(target);
     };
 
-    Distortion.prototype.bypass = function(){
+    Overdrive.prototype.bypass = function(){
         if(this.isBypassed) {
             this.input.disconnect();
             this.input.connect(this.gain);
@@ -114,18 +104,18 @@ function Distortion (SharedAudioContext) {
         }
     };
 
-    Distortion.prototype.setVolume = function(volume) {
+    Overdrive.prototype.setVolume = function(volume) {
         this.gain.gain.value = 1.5 * volume;
     };
 
-    Distortion.prototype.setTone = function(tone) {
+    Overdrive.prototype.setTone = function(tone) {
         this.highpass.frequency.value = 20 * tone;
     };
 
-    return Distortion;
+    return Overdrive;
 }
 
 
 angular
     .module('Pedal')
-    .factory('Distortion', Distortion);
+    .factory('Overdrive', Overdrive);
