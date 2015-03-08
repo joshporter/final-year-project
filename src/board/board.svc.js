@@ -1,4 +1,4 @@
-function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, SharedAudioContext) {
+function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive, SharedAudioContext) {
     var stage = SharedAudioContext.getContext(),
         boardInput = stage.createGain();
 
@@ -6,7 +6,8 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, SharedAudi
         sample: new FileInput(),
         line: new LineInput(),
         cabinet: new Cabinet(),
-        distortion: new Distortion()
+        distortion: new Distortion(),
+        overdrive: new Overdrive()
     };
 
     var samples = [
@@ -24,12 +25,14 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, SharedAudi
 
     this.loadPedals = function () {
         pedals.cabinet.load('assets/ir/5150.wav');
-        pedals.distortion.load('overdrive');
+        pedals.distortion.load('dist3');
+        pedals.overdrive.load('overdrive');
     };
 
     this.wireUpBoard = function () {
         boardInput.connect(pedals.distortion.input);
-        pedals.distortion.connect(pedals.cabinet.input);
+        pedals.distortion.connect(pedals.overdrive.input);
+        pedals.overdrive.connect(pedals.cabinet.input);
         pedals.cabinet.connect(stage.destination);
     };
 
