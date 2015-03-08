@@ -2,6 +2,14 @@ body {
     background: #dcdcdc;
 }
 
+/* Your local CSS File */
+@font-face {
+    font-family: 'Audiowide';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Audiowide'), local('Audiowide-Regular'), url(../assets/fonts/Audiowide-Regular.ttf) format('truetype');
+}
+
 .pedal {
     float: left;
     position: relative;
@@ -49,10 +57,20 @@ body {
     padding: 20px;
     font-size: 35px;
     color: #424a4d;
-    text-shadow: 0 1px 1px rgba(0,0,0, .5), 0 -1px 0 rgba(255,255,255, .2);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5), 0 -1px 0 rgba(255, 255, 255, .2);
     border-radius: 4px 4px 10px 10px;
     background: #424a4d url('http://api.thumbr.it/whitenoise-361x370.png?background=424a4dff&noise=000000&density=40&opacity=15');
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0 0px 1px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.6), 0 4px 2px rgba(0, 0, 0, 0.2), 0 9px 4px rgba(0, 0, 0, 0.1), inset 0 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+.name {
+    z-index: 10;
+    position: absolute;
+    top: 25%;
+    font-family: Audiowide;
+    color: #202020;
+    text-align: center;
+    width: 192px;
 }
 
 .distortion {
