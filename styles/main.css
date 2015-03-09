@@ -48,6 +48,37 @@ body {
     top: 15px;
 }
 
+.knob {
+    z-index: 30;
+    top: 25px;
+}
+
+.settings {
+    z-index: 30;
+    top: 20px;
+}
+
+.knobs {
+    z-index: 20;
+}
+
+.flanger-speed {
+    position: absolute;
+    left: 5%;
+}
+.flanger-delay {
+    position: absolute;
+    left: 27%;
+}
+.flanger-depth {
+    position: absolute;
+    left: 55%;
+}
+.flanger-feedback {
+    position: absolute;
+    left: 77%;
+}
+
 .foot-sw {
     position: absolute;
     left: 7.5%;
@@ -83,6 +114,12 @@ body {
 
 .flanger {
     background-color: #9e3e8d;
+    width: 268px;
+    z-index: 20;
+}
+
+.flanger-sw {
+    width: 227px;
 }
 
 .delay {
