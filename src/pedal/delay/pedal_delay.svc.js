@@ -14,8 +14,8 @@ function Delay (SharedAudioContext) {
         this.delay.delayTime.value = parseFloat( 0.5 );
         this.feedback.gain.value = parseFloat( 0.75 );
 
-        this.feedback.connect( this.delay );
         this.delay.connect( this.feedback );
+        this.feedback.connect( this.delay );
 
         this.input.connect(this.output);
     };
@@ -31,8 +31,8 @@ function Delay (SharedAudioContext) {
     delay.prototype.bypass = function(){
         if(this.isBypassed) {
             this.input.disconnect();
-            this.input.connect(this.feedback);
-            this.delay.connect(this.feedback);
+            this.input.connect(this.output);
+            this.input.connect(this.delay);
             this.delay.connect(this.output);
 
             this.isBypassed = false;

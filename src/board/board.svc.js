@@ -1,4 +1,4 @@
-function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive, Flanger, Delay, SharedAudioContext) {
+function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive, Flanger, Chorus, Delay, SharedAudioContext) {
     var stage = SharedAudioContext.getContext(),
         boardInput = stage.createGain();
 
@@ -9,6 +9,7 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
         distortion: new Distortion(),
         overdrive: new Overdrive(),
         flanger: new Flanger(),
+        chorus: new Chorus(),
         delay: new Delay()
     };
 
@@ -22,7 +23,7 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
     ];
 
     this.loadSource = function () {
-        pedals.sample.loadBuffer(samples[0]);
+        pedals.sample.loadBuffer(samples[2]);
         pedals.sample.connect(boardInput);
     };
 
@@ -31,6 +32,7 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
         pedals.distortion.load('dist3');
         pedals.overdrive.load('overdrive');
         pedals.flanger.load();
+        pedals.chorus.load();
         pedals.delay.load();
     };
 
@@ -38,7 +40,8 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
         boardInput.connect(pedals.distortion.input);
         pedals.distortion.connect(pedals.overdrive.input);
         pedals.overdrive.connect(pedals.flanger.input);
-        pedals.flanger.connect(pedals.delay.input);
+        pedals.flanger.connect(pedals.chorus.input);
+        pedals.chorus.connect(pedals.delay.input);
         pedals.delay.connect(pedals.cabinet.input);
         pedals.cabinet.connect(stage.destination);
     };
