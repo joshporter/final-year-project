@@ -8,6 +8,17 @@ function FileInput (SharedAudioContext) {
         this.sample = null;
     };
 
+    FileInput.prototype.getFiles = function () {
+        return [
+            {name: 'Open', url: 'assets/samples/open.wav'},
+            {name: 'Chords', url: 'assets/samples/chords.wav'},
+            {name: 'Everlong', url: 'assets/samples/everlong.wav'},
+            {name: 'Octave Chords', url: 'assets/samples/octaves.wav'},
+            {name: 'Foo Fighters', url: 'assets/samples/FF.wav'},
+            {name: 'Lead', url: 'assets/samples/twiddles.wav'}
+        ];
+    };
+
     FileInput.prototype.loadBuffer = function(url) {
         var request = new XMLHttpRequest();
         request.open("GET", url, true);

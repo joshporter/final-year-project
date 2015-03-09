@@ -13,17 +13,7 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
         delay: new Delay()
     };
 
-    var samples = [
-        'assets/samples/open.wav',
-        'assets/samples/chords.wav',
-        'assets/samples/everlong.wav',
-        'assets/samples/octaves.wav',
-        'assets/samples/FF.wav',
-        'assets/samples/twiddles.wav'
-    ];
-
     this.loadSource = function () {
-        pedals.sample.loadBuffer(samples[2]);
         pedals.sample.connect(boardInput);
     };
 

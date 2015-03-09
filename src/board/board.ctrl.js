@@ -1,9 +1,11 @@
-function BoardCtrl (Board) {
+function BoardCtrl ($scope, Board) {
     var vm = this;
 
     Board.loadSource();
     Board.loadPedals();
     Board.wireUpBoard();
+
+    $scope.samples = Board.getPedal('sample').getFiles();
 
     vm.play = function() {
         Board.playSample();

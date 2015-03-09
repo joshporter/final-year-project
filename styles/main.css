@@ -2,6 +2,10 @@ body {
     background: #dcdcdc;
 }
 
+.top-buffer {
+    margin-top: 20px;
+}
+
 /* Your local CSS File */
 @font-face {
     font-family: 'Audiowide';
@@ -11,7 +15,7 @@ body {
 }
 
 .pedal {
-    float: left;
+    display: inline-block;
     position: relative;
     margin: 20px 20px;
     width: 192px;
@@ -66,14 +70,17 @@ body {
     position: absolute;
     left: 5%;
 }
+
 .flanger-delay {
     position: absolute;
     left: 27%;
 }
+
 .flanger-depth {
     position: absolute;
     left: 55%;
 }
+
 .flanger-feedback {
     position: absolute;
     left: 77%;
@@ -135,10 +142,12 @@ body {
     position: absolute;
     left: 3%;
 }
+
 .chorus-rate {
-position: absolute;
-left: 36%;
+    position: absolute;
+    left: 36%;
 }
+
 .chorus-depth {
     position: absolute;
     left: 68%;
