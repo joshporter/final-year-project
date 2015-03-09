@@ -1,0 +1,4 @@
+<select id="samples-list" ng-model="sample">
+    <option value=''>Select a sample...</option>
+    <option ng-repeat="sample in samples" value="{{sample.url}}">{{sample.name}}</option>
+</select>

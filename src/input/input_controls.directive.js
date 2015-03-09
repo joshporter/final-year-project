@@ -2,12 +2,16 @@ function inputControls() {
     return {
         restrict: 'EA',
         templateUrl: 'templates/controls.html',
-        link: function (scope, element) {
+        link: function ($rootScope, scope, element) {
             var start = angular.element('.glyphicon-play'),
                 stop = angular.element('.glyphicon-stop'),
                 liveInput = angular.element('.glyphicon-record');
 
             start.on('click', function(){
+                if($rootScope.isLoading){
+                    alert('Please load a sample first!');
+                    return;
+                }
                 stop.prop('disabled', false);
                 start.prop('disabled', true);
             });
