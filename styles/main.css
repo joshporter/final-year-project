@@ -24,7 +24,7 @@ body {
 .led {
     position: absolute;
     left: 47.5%;
-    top: 20px;
+    top: 10px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -50,7 +50,7 @@ body {
 
 .knob {
     z-index: 30;
-    top: 25px;
+    top: 30px;
 }
 
 .settings {
@@ -125,4 +125,21 @@ body {
 .delay {
     background-color: #d6dce2;
     color: #4b689c;
+}
+
+.chorus {
+    background-color: #72dded;
+}
+
+.chorus-delay {
+    position: absolute;
+    left: 3%;
+}
+.chorus-rate {
+position: absolute;
+left: 36%;
+}
+.chorus-depth {
+    position: absolute;
+    left: 68%;
 }
