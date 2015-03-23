@@ -15,7 +15,8 @@ function FileInput (SharedAudioContext) {
             {name: 'Everlong', url: 'assets/samples/everlong.wav'},
             {name: 'Octave Chords', url: 'assets/samples/octaves.wav'},
             {name: 'Foo Fighters', url: 'assets/samples/FF.wav'},
-            {name: 'Lead', url: 'assets/samples/twiddles.wav'}
+            {name: 'Lead', url: 'assets/samples/twiddles.wav'},
+            {name: 'Delay', url: 'assets/samples/delay.wav'}
         ];
     };
 

@@ -17,7 +17,7 @@ function flangerPedal (Board) {
             });
 
             speed.on('dblclick', function() {
-                speed.val(parseFloat(0.70));
+                speed.val(parseFloat(0.7));
             });
 
             delay.on('change', function(e) {
@@ -33,7 +33,7 @@ function flangerPedal (Board) {
             });
 
             depth.on('dblclick', function() {
-                depth.val(parseFloat(0.0013));
+                depth.val(parseFloat(0.002));
             });
 
             feedback.on('change', function(e) {
@@ -41,7 +41,7 @@ function flangerPedal (Board) {
             });
 
             feedback.on('dblclick', function() {
-                feedback.val(parseFloat(0.4));
+                feedback.val(parseFloat(0.6));
             });
 
             footswitch.on('click', function () {

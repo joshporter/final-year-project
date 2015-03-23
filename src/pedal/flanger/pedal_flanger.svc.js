@@ -19,9 +19,9 @@ function Flanger (SharedAudioContext) {
 
         this.delay.delayTime.value = parseFloat( 0.003 );
 
-        this.depth.gain.value = parseFloat( 0.0013 );
+        this.depth.gain.value = parseFloat( 0.0020 );
 
-        this.feedback.gain.value = parseFloat( 0.40 );
+        this.feedback.gain.value = parseFloat( 0.60 );
 
         this.osc.connect(this.depth);
         this.depth.connect(this.delay.delayTime);

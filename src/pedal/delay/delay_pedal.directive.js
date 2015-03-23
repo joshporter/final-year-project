@@ -15,7 +15,7 @@ function delayPedal (Board) {
             });
 
             time.on('dblclick', function() {
-                time.val(parseFloat(0.5));
+                time.val(parseFloat(0.31));
             });
 
             feedback.on('change', function(e) {

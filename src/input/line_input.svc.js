@@ -16,7 +16,7 @@ function LineInput($rootScope, SharedAudioContext) {
                 "optional": [
                     {"googEchoCancellation": "false"},
                     {"googAutoGainControl": "false"},
-                    {"googNoiseSuppression": "true"},
+                    {"googNoiseSuppression": "false"},
                     {"googHighpassFilter": "false"}
                 ]
             }

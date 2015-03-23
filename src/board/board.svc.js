@@ -19,7 +19,7 @@ function Board($rootScope, FileInput, LineInput, Cabinet, Distortion, Overdrive,
 
     this.loadPedals = function () {
         pedals.cabinet.load('assets/ir/5150.wav');
-        pedals.distortion.load('dist3');
+        pedals.distortion.load('dist6');
         pedals.overdrive.load('overdrive');
         pedals.flanger.load();
         pedals.chorus.load();

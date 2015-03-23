@@ -1,5 +1,5 @@
 body {
-    background: #dcdcdc;
+    background: #1b1b1b;
 }
 
 .top-buffer {
@@ -60,6 +60,11 @@ body {
 .settings {
     z-index: 30;
     top: 20px;
+    text-align: center;
+}
+
+.settings h6 {
+    margin-left: 5px;
 }
 
 .knobs {

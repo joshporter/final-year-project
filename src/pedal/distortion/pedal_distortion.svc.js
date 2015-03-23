@@ -72,7 +72,7 @@ function Distortion (SharedAudioContext) {
             case 'dist5':
                 return (Math.exp(x) - Math.exp(-x * 1.2)) / (Math.exp(x) + Math.exp(-x));
             case 'dist6':
-                return this.tanh(x);
+                return (1 + k) * x / (1 + k * Math.abs(x));
         }
     };
 

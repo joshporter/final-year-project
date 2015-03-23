@@ -62,7 +62,7 @@ function Overdrive (SharedAudioContext) {
     Overdrive.prototype.curveAlgorithm = function (x, type, k) {
         switch(type) {
             case 'overdrive':
-                return (1 + k) * x / (1 + k * Math.abs(x));
+                return this.tanh(x);
         }
     };
 

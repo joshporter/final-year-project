@@ -11,11 +11,10 @@ function Delay (SharedAudioContext) {
     };
 
     delay.prototype.load = function() {
-        this.delay.delayTime.value = parseFloat( 0.5 );
+        this.delay.delayTime.value = parseFloat( 0.31 );
         this.feedback.gain.value = parseFloat( 0.75 );
 
-        this.delay.connect( this.feedback );
-        this.feedback.connect( this.delay );
+        this.feedback.connect(this.delay);
 
         this.input.connect(this.output);
     };
@@ -33,6 +32,7 @@ function Delay (SharedAudioContext) {
             this.input.disconnect();
             this.input.connect(this.output);
             this.input.connect(this.delay);
+            this.delay.connect(this.feedback);
             this.delay.connect(this.output);
 
             this.isBypassed = false;
